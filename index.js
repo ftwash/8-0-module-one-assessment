@@ -98,7 +98,7 @@ function getAverageIMDBRating(movies) {
   let imdbRatings = []
 
   for(const movie of movies){
-    let numConversion = parseInt(movie.imdbRating)
+    let numConversion = parseFloat(movie.imdbRating)
     imdbRatings.push(numConversion)
   }
 
@@ -131,7 +131,27 @@ function countByRating(movies) {
     return {}
   }
 
+  //loop through the array of movies, and update the count for that type of rating as you go through the array.
+
+  //create a number type variable for each of the rating categories, to be updated as we go through the array.
   
+  let gRated = 0
+  let pgRated = 0
+  let pg13 = 0
+
+
+  for(const movie of movies){
+    if(movie.rated === "G"){
+      gRated += 1
+    }else if(movie.rated === "PG"){
+      pgRated += 1
+    }else if(movie.rated === "PG-13"){
+      pg13 += 1
+    }
+  }
+
+  return {G: gRated, PG: pgRated, "PG-13": pg13}
+
 }
 
 /**
