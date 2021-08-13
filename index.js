@@ -151,7 +151,8 @@ function countByRating(movies) {
   }
 
   return {G: gRated, PG: pgRated, "PG-13": pg13}
-
+  
+  
 }
 
 /**
