@@ -126,6 +126,9 @@ function getAverageIMDBRating(movies) {
  *  //> { G: 3, PG: 7 }
  */
 function countByRating(movies) {
+  // You’re going to need a structure that changes based on the rating types within the given object. 
+  // At the end, you’ll return an object with only the rating types (and their counts) which are included in the inputted object. 
+
   //if the inputted `movies` array is empty, return an empty object.
   if(movies.length === 0){
     return {}
@@ -154,7 +157,7 @@ function countByRating(movies) {
   
   
 }
-
+//console.log(countByRating(movies))
 /**
  * findById()
  * -----------------------------
@@ -209,8 +212,19 @@ function findById(movies, id) {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+  //create an empty array where movies that contain the inputted genre can be accumulated
+  let matchingMovies = []
 
+  //loop through the array, making sure to run the .toLowerCase() method on the genres from the object, and the inputted genre
+  for(const movie of movies){
+    if(movie.genre.toLowerCase().includes(genre.toLowerCase())){
+      matchingMovies.push(movie)
+    }
+  }
+  return matchingMovies
+
+}
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
  * -----------------------------
