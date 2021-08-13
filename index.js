@@ -153,6 +153,12 @@ function countByRating(movies) {
     }
   }
 
+  let accumulatorObj = {}
+  if(movies.includes(gRated)){
+    accumulatorObj.push
+  }
+
+
   return {G: gRated, PG: pgRated, "PG-13": pg13}
   
   
@@ -247,7 +253,28 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  //the release date format in `movies` array is as follows: "03 Nov 2015"
+  //the plan is to convert it to an array of strings, then convert the third element into a number. 
+  
+
+  let yearsList = []
+
+  for(const movie of movies){
+    let arr = movie.releasedOnDVD.split(' ')
+    let releaseYear = parseInt(arr[2])
+    yearsList.push(releaseYear)
+  }
+
+  let matchingMovies = []
+
+  for(let i = 0; i < yearsList.length; i++){
+    if(yearsList[i] <= year){
+      matchingMovies.push(movies[i])
+    }
+  }
+  return matchingMovies
+}
 
 /**
  * getBiggestBoxOfficeMovie()
